@@ -1,0 +1,34 @@
+{
+  "name": "twilone",
+  "version": "1.0.0",
+  "description": "Twitter clone",
+  "main": "index.js",
+  "scripts": {
+    "test": "git repository: https://github.com/fofanoff/Twilone.git"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fofanoff/Twilone.git"
+  },
+  "keywords": [
+    "Twitter",
+    "clone",
+    "express.io",
+    "MySQL"
+  ],
+  "author": "Konstantin F.",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fofanoff/Twilone/issues"
+  },
+  "homepage": "https://github.com/fofanoff/Twilone#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.0.0",
+    "ejs": "^2.6.1",
+    "express": "^4.17.0",
+    "mysql2": "^1.6.5",
+    "sequelize": "^5.8.6"
+  },
+  "devDependencies": {}
+}
