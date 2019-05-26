@@ -14,12 +14,32 @@ const sequelize = new Sequelize({
   dialect: process.env.TWILONE_DB_DIALECT
 });
 
+const User = sequelize.define('user', {
+	'login' : {
+		'type' : Sequelize.STRING,
+		'allowNull' : false,
+		'unique' : true
+	},
+	'password' : {
+		'type' : Sequelize.STRING,
+		'allowNull' : false
+	},
+	'admin' : {
+		'type' : Sequelize.BOOLEAN,
+		'allowNull' : false,
+		'defaultValue' : false
+	}
+});
+
 const Twit = sequelize.define('twit', {
 	'message' : {
 		'type' : Sequelize.STRING,
 		'allowNull' : false
 	}
 });
+
+User.hasMany(Twit);
+Twit.belongsTo(User);
 
 const app = express();
 
@@ -46,5 +66,11 @@ app.post('/', (request, response) => {
 });
 
 sequelize.sync().then(() => {
-	app.listen(port, () => console.log(`Twilone is listening on port ${port}.`));
+	User.upsert({
+		'login' : process.env.TWILONE_ADMIN_LOGIN,
+		'password' : process.env.TWILONE_ADMIN_PASSWORD,
+		'admin' : true
+	}).then(() => {
+ 		app.listen(port, () => console.log(`Twilone is listening on port ${port}.`));
+	});
 });
