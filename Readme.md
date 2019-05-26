@@ -26,6 +26,10 @@ TWILONE_DB_DIALECT= # one of 'mysql' | 'mariadb' | 'postgres' | 'mssql'
 
 # Web Server Configurations
 TWILONE_PORT=
+
+# Web App Configurations
+
+TWILONE_ADMIN_PASSWORD=
 ```
 
 3. Install all the dependencies.
