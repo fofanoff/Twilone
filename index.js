@@ -82,6 +82,7 @@ app.post('/', (request, response) => {
     });
 });
 
+<<<<<<< HEAD
 app.get('/register', (request, response) => {
     response.render('register', { 'session' : request.session });
 });
@@ -162,4 +163,14 @@ sequelize.sync().then(() => {
     }).then(() => {
         app.listen(port, () => console.log(`Twilone is listening on port ${port}.`));
     });
+=======
+sequelize.sync().then(() => {
+	User.upsert({
+		'login' : process.env.TWILONE_ADMIN_LOGIN,
+		'password' : process.env.TWILONE_ADMIN_PASSWORD,
+		'admin' : true
+	}).then(() => {
+ 		app.listen(port, () => console.log(`Twilone is listening on port ${port}.`));
+	});
+>>>>>>> 9a0b3a2bc49736a6d85d57d026172bccc774b556
 });
